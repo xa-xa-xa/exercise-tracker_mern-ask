@@ -75,12 +75,16 @@ const CreateExercise = () => {
 
         <div className='flex-col flex py-3'>
           <label className='pb-2 text-gray-700 font-semibold'>User:</label>
-
           <select
+            required
             value={username}
             onChange={onChange}
             name='username'
-            className='flex w-4/12 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200 h-10 text-gray-600'>
+            className='flex sm:w-5/12 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200 h-10 text-gray-600'>
+            <option className='hidden' value=''>
+              choose user
+            </option>
+
             {loaded ? (
               users.map((item, idx) => (
                 <option key={idx} value={item}>
@@ -105,6 +109,10 @@ const CreateExercise = () => {
               className='flex w-4/12 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200 h-10 text-gray-600'
               placeholder=' or choose from list'
               id='grid-state'>
+              <option value='' className='hidden'>
+                choose activity
+              </option>
+
               {activity.sort().map((item, idx) => (
                 <option key={idx} value={item.toLowerCase()}>
                   {item.toLowerCase()}

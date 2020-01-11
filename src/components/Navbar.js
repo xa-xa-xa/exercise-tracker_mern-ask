@@ -6,7 +6,7 @@ const Navbar = () => {
   // const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <nav className='flex items-center justify-between flex-wrap bg-red-400	 p-2'>
+    <nav className='flex items-center justify-between flex-wrap bg-red-700 p-2'>
       <Link to='/' className='flex items-center flex-shrink-0 text-white mr-6'>
         <span className='font-semibold text-xl tracking-tight'>
           Your Exercise Logger
@@ -20,7 +20,6 @@ const Navbar = () => {
             <svg
               className='fill-current h-3 w-3'
               version='1.1'
-              id='Layer_1'
               xmlns='http://www.w3.org/2000/svg'
               xmlnsXlink='http://www.w3.org/1999/xlink'
               viewBox='0 0 100.353 100.353'

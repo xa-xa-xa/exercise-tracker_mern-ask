@@ -62,11 +62,11 @@ const ExercisesList = () => {
                   </td>
                 </tr>
               ) : (
-                exercises.map((items, idx) => (
+                exercises.map((item, idx) => (
                   <ExerciseItem
-                    exercise={items}
+                    exercise={item}
                     deleteExercise={deleteExercise}
-                    key={idx}
+                    key={item._id}
                     idx={idx}
                   />
                 ))

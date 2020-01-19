@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently \"npm run server\"  \"npm run client\" ",
-    "start": "npm run client && cd backend && node server.js",
+    "start": "cd backend && node server.js",
     "heroku-postbuild": "cd backend && npm install"
   },
   "eslintConfig": {

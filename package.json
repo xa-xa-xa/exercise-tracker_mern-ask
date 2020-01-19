@@ -20,7 +20,7 @@
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "server": "cd backend && nodemon server",
     "client": "npm run build:style && react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build:style && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently \"npm run server\"  \"npm run client\" ",

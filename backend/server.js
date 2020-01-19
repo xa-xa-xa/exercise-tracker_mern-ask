@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // DB endpoint
-const uri = process.env.ATLAS_URI;
+const uri = process.env.DATABASE_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

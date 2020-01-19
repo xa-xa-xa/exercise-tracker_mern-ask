@@ -39,6 +39,14 @@ require('./models/user.model');
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+  app.get('*', (res, req) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
+}
+
 app.listen(port, () => {
+  console.log('Environment:', process.env.NODE_ENV);
   console.log(`Server: listening port: ${port}...`);
 });

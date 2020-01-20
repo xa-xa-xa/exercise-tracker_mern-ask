@@ -24,9 +24,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "concurrently \"npm run server\"  \"npm run client\" ",
-    "start": "node backend/server.js",
+    "start": "react-scripts start && node backend/server.js",
     "postinstall": "npm install --prefix backend",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build:style && npm run build && npm install --prefix backend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix backend"
   },
   "eslintConfig": {
     "extends": "react-app"

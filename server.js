@@ -10,11 +10,12 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // DB endpoint
-const uri = process.env.DATABASE_URI;
+const uri = process.env.REACT_APP_DATABASE_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
 });
 
 const connect = mongoose.connection;

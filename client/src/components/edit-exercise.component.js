@@ -19,7 +19,7 @@ const EditExercise = props => {
   const getAnExercise = async => {
     console.log('getting from server...');
     axios
-      .get('http://localhost:5000/exercises/' + props.match.params.id)
+      .get('/exercises/' + props.match.params.id)
       .then(async res => {
         if (res.data) {
           setExercise({
@@ -59,7 +59,7 @@ const EditExercise = props => {
 
     axios
       .post(
-        'http://localhost:5000/exercises/update/' + props.match.params.id,
+        '/exercises/update/' + props.match.params.id,
         exercise
       )
       .then(res => {
@@ -73,7 +73,7 @@ const EditExercise = props => {
   useEffect(() => {
     getAnExercise();
 
-    axios.get('http://localhost:5000/users/').then(res => {
+    axios.get('/users/').then(res => {
       if (res.data.length > 0) {
         setUsers(res.data.map(user => user.username));
         setLoaded(true);

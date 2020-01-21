@@ -42,7 +42,7 @@ const CreateExercise = () => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:5000/exercises/add', exercise)
+      .post('/exercises/add', exercise)
       .then(res => {
         if (res.status === 200) window.location = '/';
       })
@@ -52,7 +52,7 @@ const CreateExercise = () => {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/users/').then(res => {
+    axios.get('/users/').then(res => {
       if (res.data.length > 0) {
         setUsers(res.data.map(user => user.username));
         setLoaded(true);

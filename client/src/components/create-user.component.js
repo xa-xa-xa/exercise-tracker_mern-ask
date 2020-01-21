@@ -10,7 +10,7 @@ const CreateUser = () => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:5000/users/add', { username: username })
+      .post('/users/add', { username: username })
       .then(res => {
         console.log(res.status);
         if (res.status === 200) window.location = '/';

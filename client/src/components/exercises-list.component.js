@@ -13,18 +13,20 @@ const ExercisesList = () => {
   const getExercises = async => {
     console.log('getting from server...');
     axios
-      .get('http://localhost:5000/exercises/')
+      .get('/exercises/')
       .then(async res => {
         if (res.data) {
           setExercises(res.data);
           setLoading(false);
         }
       })
-      .catch(err => console.log(err));
+      .catch(err =>
+        console.log("Can't get Exercise List because of error: ", err)
+      );
   };
 
   const deleteExercise = id => {
-    axios.delete('http://localhost:5000/exercises/' + id).then(res => {
+    axios.delete('/exercises/' + id).then(res => {
       if (res.status === 200) {
         setExercises(exercises.filter(item => item._id !== id));
       }

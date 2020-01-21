@@ -55,7 +55,7 @@ const ExercisesList = () => {
                   Duration
                 </th>
                 <th className='sm:p-3 p-1 sm:px-5 text-xs sm:text-sm'>Date</th>
-                <th className='sm:p-3 p-1 sm:px-5 text-xs sm:text-sm'>
+                <th className='sm:p-3 p-1 sm:px-5 text-xs sm:text-sm hidden sm:block'>
                   Actions
                 </th>
               </tr>

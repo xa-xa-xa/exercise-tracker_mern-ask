@@ -4,11 +4,8 @@ import ExerciseItem from './exercise-item.component';
 import axios from 'axios';
 
 const ExercisesList = () => {
-  // const [exerciseItem, setExerciseItem] = useState();
   const [loading, setLoading] = useState(true);
   const [exercises, setExercises] = useState([]);
-  // const [remove, setRemove] = useState(false);
-  // const [edit, setEdit] = useState(false);
 
   const getExercises = async => {
     console.log('getting from server...');

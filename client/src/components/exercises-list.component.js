@@ -47,11 +47,17 @@ const ExercisesList = () => {
           <table className='w-full sm:text-md text-sm bg-white '>
             <tbody className='justify-center'>
               <tr className='border-b  bg-gray-400 '>
-                <th className='sm:p-3 p-1 sm:px-5'>User</th>
-                <th className='sm:p-3 p-1 px-5'>Description</th>
-                <th className='sm:p-3 p-1 sm:px-5'>Duration</th>
-                <th className='sm:p-3 p-1 sm:px-5'>Date</th>
-                <th className='sm:p-3 p-1 sm:px-5'>Actions</th>
+                <th className='sm:p-3 p-1 sm:px-5 text-xs sm:text-sm'>User</th>
+                <th className='sm:p-3 p-1 px-5 text-xs sm:text-sm'>
+                  Description
+                </th>
+                <th className='sm:p-3 p-1 sm:px-5 text-xs sm:text-sm'>
+                  Duration
+                </th>
+                <th className='sm:p-3 p-1 sm:px-5 text-xs sm:text-sm'>Date</th>
+                <th className='sm:p-3 p-1 sm:px-5 text-xs sm:text-sm'>
+                  Actions
+                </th>
               </tr>
               {loading || !exercises.length ? (
                 <tr className=''>

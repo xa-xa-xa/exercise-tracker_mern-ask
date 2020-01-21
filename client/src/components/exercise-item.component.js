@@ -9,10 +9,16 @@ const ExerciseItem = ({ idx, exercise, deleteExercise }) => {
       className={`hover:border-b hover:bg-blue-100 hover:shadow bor ${
         idx % 2 === 0 ? 'bg-gray-100' : ''
       }`}>
-      <td className='p-2 sm:px-5 text-gray-700 text-xs'>{exercise.username}</td>
-      <td className='p-2 sm:px-5 text-gray-700'>{exercise.description}</td>
-      <td className='p-2 sm:px-5 text-gray-700'>{exercise.duration} min</td>
-      <td className='p-2 sm:px-5 text-gray-700'>
+      <td className='p-2 sm:px-5 text-gray-700 text-xs sm:text-sm'>
+        {exercise.username}
+      </td>
+      <td className='p-2 sm:px-5 text-gray-700 text-xs sm:text-sm'>
+        {exercise.description}
+      </td>
+      <td className='p-2 sm:px-5 text-gray-700 text-xs sm:text-sm'>
+        {exercise.duration} min
+      </td>
+      <td className='p-2 sm:px-5 text-gray-700 text-xs sm:text-sm'>
         <Moment format='MM/DD/YYYY'>{exercise.date}</Moment>
       </td>
 

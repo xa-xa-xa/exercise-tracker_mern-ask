@@ -24,10 +24,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
-const exercisesRouter = require('./routes/exercises');
-const usersRouter = require('./routes/users');
-require('./models/exercise.model');
-require('./models/user.model');
+const exercisesRouter = require('./backend/routes/exercises');
+const usersRouter = require('./backend/routes/users');
+require('./backend/models/exercise.model');
+require('./backend/models/user.model');
 
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
@@ -35,9 +35,9 @@ app.use('/users', usersRouter);
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
-  app.use(express.static(path.join(__dirname, 'build')));
+  app.use(express.static(path.join(__dirname, 'client/build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '/build/index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/build/index.html'));
   });
 }
 

@@ -4,7 +4,7 @@
 
 Full stack MERN app built with React, Node.js (full CRUD), Express,MongoDB, Tailwind.<br />
 
-### live demo [https://www.askrasn.com/exercise-tracker](https://www.askrasn.com/exercise-tracker)
+#### live demo [https://exercise-tracker-mern-ask.herokuapp.com/](https://exercise-tracker-mern-ask.herokuapp.com/)
 
 ## Available Scripts
 

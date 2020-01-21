@@ -38,7 +38,7 @@ const ExercisesList = () => {
   }, []);
 
   return (
-    <div className='text-gray-900 bg-gray-300 md:w-10/12 rounded-lg m-auto sm:my-2 my-px'>
+    <div className='text-gray-900 bg-gray-300 md:w-11/12 rounded-lg m-auto sm:my-2 my-px'>
       <h1 className='text-3xl text-center sm:pt-4 sm:pb-2 p-1'>
         Exercises List
       </h1>

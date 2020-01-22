@@ -1,86 +1,88 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState } from 'react';
 import Moment from 'react-moment';
+import EditButton from './layout/buttons/edit-button';
+import DeleteButton from './layout/buttons/delete-button';
+import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
+
+const modalCustomStyles = {};
 
 const ExerciseItem = ({ idx, exercise, deleteExercise }) => {
-  const cellStyles = 'sm:p-2 p-1 sm:px-5 text-gray-700 text-xs sm:text-sm';
+  Modal.setAppElement(document.getElementById('root'));
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
+  function afterOpenModal() {
+    // Modal.subtitle.style.color = '#f00';
+  }
+
+  const cellStyles = 'sm:p-2 sm:px-5 text-gray-700 text-xs sm:text-sm';
+
   return (
-    <tr
-      key={idx}
-      className={`hover:border-b hover:bg-blue-100 hover:shadow bor ${
-        idx % 2 === 0 ? 'bg-gray-100' : ''
-      }`}>
-      <td className={`${cellStyles}`}>{exercise.username}</td>
-      <td className={`${cellStyles}`}>{exercise.description}</td>
-      <td className={`${cellStyles}`}>{exercise.duration} min</td>
-      <td className={`${cellStyles}`}>
-        <Moment format='MM/DD/YYYY'>{exercise.date}</Moment>
-      </td>
-
-      <td className={`hidden sm:table-cell ${cellStyles} text-center`}>
-        <td className='w-full'>
-          <Link to={'/edit/' + exercise._id} className='inline-flex'>
-            <button
-              type='button'
-              className='flex sm:mr-3 mr-1 text-xs bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 md:pl-2 sm:pr-0 rounded-full focus:outline-none focus:shadow-outline'>
-              <svg
-                className='inline fill-current sm:h-4 h-4 sm:w-4 w-3 m-auto sm:mr-2'
-                viewBox='0 0 24 24'
-                version='1.1'
-                xmlns='http://www.w3.org/2000/svg'
-                xmlnsXlink='http://www.w3.org/1999/xlink'>
-                <g
-                  id='Icons'
-                  stroke='none'
-                  strokeWidth='1'
-                  fill='none'
-                  fillRule='evenodd'>
-                  <g
-                    id='Outlined'
-                    transform='translate(-780.000000, -2015.000000)'>
-                    <g
-                      id='Editor'
-                      transform='translate(100.000000, 1960.000000)'>
-                      <g
-                        id='Outlined-/-Editor-/-border_color'
-                        transform='translate(680.000000, 54.000000)'>
-                        <polygon id='Path' points='0 1 24 1 24 25 0 25' />
-                        <path
-                          d='M14,4.25 L4,14.25 L4,18 L7.75,18 L17.75,8 L14,4.25 Z M6.92,16 L6,16 L6,15.08 L14,7.08 L14.92,8 L6.92,16 Z M20.71,5.04 C21.1,4.65 21.1,4.02 20.71,3.63 L18.37,1.29 C17.98,0.9 17.35,0.9 16.96,1.29 L15,3.25 L18.75,7 L20.71,5.04 Z'
-                          id='Primary-Color'
-                          fill='white'></path>
-                        <polygon
-                          fill='#D0D0D0'
-                          points='0 21 24 21 24 25 0 25'
-                        />
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-              <span className='hidden md:flex sm:pr-2'>Edit</span>
-            </button>
-          </Link>
+    <Fragment>
+      <tr
+        onTouchStart={() => setModalIsOpen(true)}
+        key={idx}
+        className={`hover:border-b hover:bg-blue-100 hover:shadow border ${
+          idx % 2 === 0 ? 'bg-gray-100' : ''
+        }`}>
+        <td className={`${cellStyles}`}>{exercise.username}</td>
+        <td className={`${cellStyles}`}>{exercise.description}</td>
+        <td className={`${cellStyles}`}>{exercise.duration} min</td>
+        <td className={`${cellStyles}`}>
+          <Moment format='MM/DD/YYYY'>{exercise.date}</Moment>
         </td>
-
-        <td className='w-full'>
-          <button
-            type='button'
-            onClick={() => deleteExercise(exercise._id)}
-            className='inline-flex text-xs bg-red-500 hover:bg-red-700 text-white py-1 px-2 md:pl-2 sm:pr-0 md:pr-2 rounded-full focus:outline-none focus:shadow-outline'>
-            <svg
-              className='inline fill-current sm:h-4 h-4 sm:w-4 w-3 m-auto sm:mr-2'
-              viewBox='0 0 512 512'
-              xmlSpace='preserve'
-              xmlns='http://www.w3.org/2000/svg'
-              xmlnsXlink='http://www.w3.org/1999/xlink'>
-              <polygon points='445.2,109.2 402.8,66.8 256,213.6 109.2,66.8 66.8,109.2 213.6,256 66.8,402.8 109.2,445.2 256,298.4 402.8,445.2   445.2,402.8 298.4,256 ' />
-            </svg>
-            <span className='hidden md:flex'>Delete</span>
-          </button>
+        <td className={`hidden sm:table-cell ${cellStyles} text-center`}>
+          <div className='w-full table-cell'>
+            <EditButton exercise={exercise} />
+          </div>
+          <div className='w-full table-cell'>
+            <DeleteButton exercise={exercise} deleteExercise={deleteExercise} />
+          </div>
         </td>
-      </td>
-    </tr>
+      </tr>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        style={modalCustomStyles}
+        className='flex bg-gray-800 w-full h-full  justify-center items-center'>
+        <div className='w-11/12 bg-white rounded-lg overflow-hidden'>
+          <div className=' lg:flex shadow rounded-lg border  border-gray-400'>
+            <div className='bg-red-500 rounded-lg lg:w-2/12 py-4 block h-full shadow-inner'>
+              <div className='text-center tracking-wide'>
+                <div className='text-white font-normal text-2xl'>
+                  {exercise.username}
+                </div>
+              </div>
+            </div>
+            <div className='w-full  lg:w-11/12 xl:w-full px-1 bg-white py-5 lg:px-2 lg:py-2 tracking-wide'>
+              <div className='flex flex-row lg:justify-start justify-center'>
+                <div className='text-gray-700 font-medium text-sm text-center lg:text-left px-2'>
+                  <Moment format='LL'>{exercise.date}</Moment>
+                </div>
+              </div>
+              <div className='font-semibold text-gray-800 text-xl text-center lg:text-left px-2'>
+                {exercise.description}
+              </div>
+            </div>
+            <div className='flex flex-row justify-around mb-4'>
+              <button className='w-1/3 bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 md:pl-2 sm:pr-0 rounded-lg focus:outline-none focus:shadow-outline'>
+                <Link to={'/edit/' + exercise._id} className='inline-flex'>
+                  <span>edit</span>
+                </Link>
+              </button>
+              <button
+                onClick={() => deleteExercise(exercise._id)}
+                className='w-1/3 bg-red-500 hover:bg-red-700 text-white py-1 px-2 md:pl-2 sm:pr-0 rounded-lg focus:outline-none focus:shadow-outline'>
+                <span>delete</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
+    </Fragment>
   );
 };
 

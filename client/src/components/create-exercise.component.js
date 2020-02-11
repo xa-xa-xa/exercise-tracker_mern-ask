@@ -47,7 +47,7 @@ const CreateExercise = () => {
         if (res.status === 200) window.location = '/';
       })
       .catch(err => {
-        console.log('ADD Exercise ERROR(fe): ', err);
+        console.log('"ADD" Exercise ERROR: ', err);
       });
   };
 
@@ -68,7 +68,8 @@ const CreateExercise = () => {
     <div className='flex justify-center md:mt-8'>
       <form
         className='md:w-3/4 m-0 p-5 bg-white w-full tw-h-full shadow md:rounded-lg rounded-lg'
-        onSubmit={onSubmit}>
+        onSubmit={onSubmit}
+      >
         <div className='text-2xl text-indigo-900 text-center mb-4'>
           Create an exercise{' '}
         </div>
@@ -80,7 +81,8 @@ const CreateExercise = () => {
             value={username}
             onChange={onChange}
             name='username'
-            className='flex sm:w-5/12 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200 h-10 text-gray-600'>
+            className='flex sm:w-5/12 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200 h-10 text-gray-600'
+          >
             <option className='hidden' value=''>
               choose user
             </option>
@@ -108,7 +110,8 @@ const CreateExercise = () => {
               name='activity'
               className='flex w-4/12 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200 h-10 text-gray-600'
               placeholder=' or choose from list'
-              id='grid-state'>
+              id='grid-state'
+            >
               <option value='' className='hidden'>
                 choose activity
               </option>
@@ -166,7 +169,8 @@ const CreateExercise = () => {
         <div className='mt-2'>
           <button
             className='rounded-lg p-3 bg-indigo-400 text-white w-full hover:bg-indigo-300'
-            type='submit'>
+            type='submit'
+          >
             ADD EXERCISE
           </button>
         </div>

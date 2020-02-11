@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function EditButton(exercise) {
+function EditButton({ exercise }) {
   return (
     <Link to={'/edit/' + exercise._id} className='inline-flex'>
       <button

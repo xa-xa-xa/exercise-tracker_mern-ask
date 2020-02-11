@@ -28,10 +28,21 @@ const EditExercise = props => {
             duration: res.data.duration,
             date: new Date(res.data.date)
           });
+          getUsers();
           setLoaded(false);
         }
       })
       .catch(err => console.log(err));
+  };
+
+  const getUsers = () => {
+    axios.get('/users/').then(res => {
+      if (res.data.length > 0) {
+        console.log('Users');
+        setUsers(res.data.map(user => user.username));
+        setLoaded(true);
+      }
+    });
   };
 
   const [exercise, setExercise] = useState({
@@ -58,27 +69,17 @@ const EditExercise = props => {
     e.preventDefault();
 
     axios
-      .post(
-        '/exercises/update/' + props.match.params.id,
-        exercise
-      )
+      .post('/exercises/update/' + props.match.params.id, exercise)
       .then(res => {
         if (res.status === 200) window.location = '/';
       })
       .catch(err => {
-        console.log('EDIT Exercise ERROR(fe): ', err);
+        console.log('"EDIT" Exercise ERROR(): ', err);
       });
   };
 
   useEffect(() => {
     getAnExercise();
-
-    axios.get('/users/').then(res => {
-      if (res.data.length > 0) {
-        setUsers(res.data.map(user => user.username));
-        setLoaded(true);
-      }
-    });
 
     return () => {};
   }, []);
@@ -91,7 +92,7 @@ const EditExercise = props => {
         className='md:w-3/4 m-0 p-5 bg-white w-full tw-h-full shadow md:rounded-lg rounded-lg'
         onSubmit={onSubmit}>
         <div className='text-2xl text-indigo-900 text-center mb-4'>
-          Edit an exercise{' '}
+          Edit an exercise
         </div>
 
         <div className='flex-col flex py-3'>

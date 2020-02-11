@@ -12,11 +12,8 @@ const ExerciseItem = ({ idx, exercise, deleteExercise }) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
-  function afterOpenModal() {
-    // Modal.subtitle.style.color = '#f00';
-  }
+  function afterOpenModal() {}
 
   const cellStyles = 'sm:p-2 sm:px-5 text-gray-700 text-xs sm:text-sm';
 
@@ -51,8 +48,14 @@ const ExerciseItem = ({ idx, exercise, deleteExercise }) => {
         <div className='w-11/12 bg-white rounded-lg overflow-hidden'>
           <div className=' lg:flex shadow rounded-lg border  border-gray-400'>
             <div className='bg-red-500 rounded-lg lg:w-2/12 py-4 block h-full shadow-inner'>
+              <button
+                className='flex text-red-100 ml-auto mr-2 -mt-3'
+                onClick={closeModal}>
+                x
+              </button>
               <div className='text-center tracking-wide'>
                 <div className='text-white font-normal text-2xl'>
+                  <span className='text-red-200 text-xl'>user: </span>
                   {exercise.username}
                 </div>
               </div>
@@ -66,10 +69,13 @@ const ExerciseItem = ({ idx, exercise, deleteExercise }) => {
               <div className='font-semibold text-gray-800 text-xl text-center lg:text-left px-2'>
                 {exercise.description}
               </div>
+              <div className='font-semibold text-gray-600 text-center lg:text-left px-2'>
+                {exercise.duration} minutes
+              </div>
             </div>
             <div className='flex flex-row justify-around mb-4'>
               <button className='w-1/3 bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 md:pl-2 sm:pr-0 rounded-lg focus:outline-none focus:shadow-outline'>
-                <Link to={'/edit/' + exercise._id} className='inline-flex'>
+                <Link to={`/edit/${exercise._id}`} className='inline-flex'>
                   <span>edit</span>
                 </Link>
               </button>
